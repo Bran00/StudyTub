@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "next": "^13.2.4",
+    "node": "^19.6.1",
+    "nodejs": "^0.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.8"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  }
+}
