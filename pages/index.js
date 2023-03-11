@@ -9,16 +9,33 @@ import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 
 import { StyledTimeline } from "../src/components/Timeline";
-import Search from "../src/components/Menu/components/Search";
+
+import { videoService } from "../src/services/videoService";
 
 
 
 
 function HomePage() {
-  
+  const service = videoService();
   const [valorDoFiltro, setValorDoFiltro] = React.useState("");
+  const [playlists, setPlaylists] = React.useState({ jogos: []});
+  //
   
+  React.useEffect(() => {
+  service.getAllVideos()
+  .then((dados) => {
+    const novasPlaylists = { ...playlists }
+    dados.data.forEach((video) => {
+      if (!novasPlaylists[video.playlist]) {
+        novasPlaylists[video.playlist] = []
+      }
+      playlists[video.playlist]?.push(video)
+    })
+    setPlaylists({ ...playlists })
+  })
   
+  }, []);
+
   return (
     <>
       
