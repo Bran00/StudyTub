@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 
 function getThumbnail(url) {
   return `
-  https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg
+  https://img.youtube.com/vi/${url.split("v=")[1]}
   `
 }
 
@@ -40,15 +40,13 @@ const supabase = createClient(
 export default function RegisterVideo() {
   const formCadastro = useForm({
     initialValues: {
-      título: "HTML",
-      url: "https://www.youtube.com/watch?v=oedWxgAZc2A",
+      título: "",
+      url: "",
     }
     
   })
   const [formVisivel, setFormVisivel] = React.useState(true)
   
-  console.log(formCadastro);
-
   return (
     <StyledRegisterVideo>
       <button className="add-video" onClick={() => setFormVisivel(true)}>
@@ -68,14 +66,8 @@ export default function RegisterVideo() {
               title: formCadastro.values.título,
               url: formCadastro.values.url,
               thumb: getThumbnail(formCadastro.values.url),
-              playlist: "jogos"
+              playlist: "HTML & CSS"
             })
-
-            .then((data) => {
-              console.log(data)
-            })
-
-            .catch((err) => console.log(err))
 
         }}>
           <div>
