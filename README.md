@@ -1,8 +1,4 @@
-<p> 
-
-<img src="assets/react1.gif" width="40" height="40" />>
-
-</p>
+![GIF](https://github.com/Bran00/StudyTub/blob/master/assets/react1.gif)
 
 
 Project made with ReactJS and Next.
