@@ -109,34 +109,34 @@ function Header() {
 
 function Timeline({searchValue, ...propriedades}){
   const playlistNames = Object.keys(propriedades.playlists)
-
   
 
    return (
      <StyledTimeline>
       
-       {playlistNames.map((playlistNames) => {
-         const videos = propriedades.playlists[playlistNames]
+       {playlistNames.map((playlist) => {
+         const videos = propriedades.playlists[playlist];
+
          return (
-           <section>
-             <h2>{playlistNames}</h2>=
+           <section key={playlist}>
+             <h2>{playlist}</h2>=
              <div>
-               {videos.filter((videos) => {
-                
-                const titleNormalized = videos.title.toLowerCase();
+               {videos
+                 .filter((videos) => {
+                   const titleNormalized = videos.title.toLowerCase()
 
-                const searchValueNormalized = searchValue.toLowerCase();
+                   const searchValueNormalized = searchValue.toLowerCase()
 
-                return titleNormalized.includes(searchValueNormalized)
-               })
-               .map((video) => {
-                 return (
-                   <a href={video.url}>
-                     <img src={video.thumb} />
-                     <span>{video.title}</span>
-                   </a>
-                 )
-               })}
+                   return titleNormalized.includes(searchValueNormalized)
+                 })
+                 .map((video) => {
+                   return (
+                     <a href={video.url} target="_blank" key={video.url}>
+                       <img src={video.thumb} />
+                       <span>{video.title}</span>
+                     </a>
+                   )
+                 })}
              </div>
            </section>
          )
